@@ -1,0 +1,121 @@
+* {
+    font-family: 'Fredoka';
+}
+
+body {
+    background-color: #FFF9F5;
+}
+
+.navbar {
+    display: flex;
+    width: 1440;
+    height: 96;
+}
+.logo {
+    font-size: 48px;
+    font-weight: 600;
+    color: #4E4747;
+
+    margin-left: 105px;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+
+    margin-left: auto; /* 👈 This pushes it to the right */
+    margin-right: 105px;
+}
+
+.button-container > button {
+    font-family: 'Nunito';
+    font-size: 19.25px;
+    
+    background-color: #4E4747;
+    color: #FFF9F5;
+
+    margin-right: 10px;
+
+    padding: 9.63px 18.05px 9.63px 18.05px;
+    border: 0px;
+    border-radius: 9.63px;
+}
+
+.info-container {
+    display: flex;
+    background-color: #D9D9D9;
+    width: 661px;
+    height: 475px;
+}
+
+.info {
+    background-color: inherit;
+    width: 661px;
+    margin-left: 105px;
+}
+
+.heading {
+    color: #4E4747;
+    font-size: 48px;
+    font-weight: 600;
+    background-color: inherit;
+}
+
+.subheading {
+    font-size: 32px;
+    font-weight: 600;
+    color: #807575;
+    background-color: inherit;
+}
+
+.get-started {
+    font-size: 48px;
+    font-weight: 600;
+    color: #FFF9F5;
+    background-color: #4E4747;
+
+    border: 0px;
+    border-radius: 20px;
+
+    margin-top: 20px;
+    padding: 8px 16px 8px 16px;
+}
+
+.image-container {
+    
+}
+
+/*
+    To handle the devices with smaller displays.
+*/
+
+@media (max-width: 786px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .logo {
+        margin: auto;
+        font-size: 36px;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .button-container > button {
+        width: 100%;
+    }
+
+    .info {
+        background-color: inherit;
+        margin-left: 105px;
+    }
+}

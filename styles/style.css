@@ -113,7 +113,7 @@ body {
     height: 244px;
     border-radius: 20px;
     margin-top: 10px;
-    padding: 20px 50px 5px 50px;
+    padding: 50px 50px 35px 50px;
 }
 
 .form-heading {
@@ -138,6 +138,21 @@ form {
 }
 
 .username::placeholder{
+    color: #4E4747;
+}
+
+.email {
+    background-color: #FFF9F5;
+    color: #4E4747;
+    font-family: 'Nunito';
+    border: 0px;
+    font-size: 16px;
+    padding: 10px 14px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.email::placeholder {
     color: #4E4747;
 }
 

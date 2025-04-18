@@ -154,7 +154,7 @@ body {
     width: 521px;
     border-radius: 20px;
     margin-top: 20px;
-    padding: 0px 20px 10px 20px;
+    padding: 10px 40px 30px 40px;
 }
 
 form {
@@ -253,6 +253,23 @@ form {
     border-radius: 9.63px;
 }
 
+.chores-done {
+    color: #C46826;
+    align-self: center;
+    margin-left: 10px;
+}
+
+.dashboard-header {
+    padding: 30px 20px 50px 20px;
+}
+
+.dashboard-header > .heading {
+    margin: 0px;
+    margin-left: 70px;
+}
+.dashboard-header > .subheading {
+    margin-left: 70px;
+}
 
 @media (max-width: 786px) {
     .navbar {

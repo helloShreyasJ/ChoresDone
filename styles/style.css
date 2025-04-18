@@ -95,6 +95,114 @@ body {
     margin-left: 90px;
 }
 
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    background-color: #D9D9D9;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+    width: 521px;
+    height: 244px;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 20px 50px 5px 50px;
+}
+
+.form-heading {
+    display: flex;
+    gap: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.username {
+    background-color: #FFF9F5;
+    color: #4E4747;
+    font-family: 'Nunito';
+    border: 0px;
+    font-size: 16px;
+    padding: 10px 14px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.username::placeholder{
+    color: #4E4747;
+}
+
+.password {
+    background-color: #FFF9F5;
+    color: #4E4747;
+    font-family: 'Nunito';
+    border: 0px;
+    font-size: 16px;
+    padding: 10px 14px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.password::placeholder{
+    color: #4E4747;
+}
+
+.submit-button {
+    background-color: #4E4747;
+    color: #FFF9F5;
+    font-family: 'Nunito';
+    border: 0px;
+    font-size: 19.25px;
+    padding: 10px 14px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.forgot-row {
+    display: flex;
+    justify-content: end;
+}
+
+.forgot-row > a {
+    font-family: 'Nunito';
+    color: #4E4747;
+    text-decoration: none;
+}
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.signup-container > p {
+    font-family: 'Nunito';
+    font-size: 16px;
+    color: #4e4747b3;
+}
+
+.signup-button {
+    font-family: 'Nunito';
+    font-size: 16px;
+    background-color: #4E4747;
+    color: #FFF9F5;
+    margin-right: 10px;
+    padding: 9px 18px;
+    border: 0px;
+    border-radius: 9.63px;
+}
+
+
 @media (max-width: 786px) {
     .navbar {
         flex-direction: column;

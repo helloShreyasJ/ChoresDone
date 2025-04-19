@@ -11,13 +11,13 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">ChoresDone</div>
+        <div id="logo" class="logo">ChoresDone</div>
         <div class="chores-done heading">0</div>
     </div>
 
     <div class="bigboy-container">
         <div class="dashboard-header">
-            <h1 class="heading">Hello Shreyas,</h1>
+            <h1 class="heading">Hello <span id="name">[name]</span>,</h1>
             <h2 class="subheading">[message]</h2>
         </div>
     </div>
@@ -32,11 +32,11 @@
     <div class="center">
         <div class="grid-container">
             <div class="grid-header"></div>
-            <div class="grid-header">Dishes</div>
-            <div class="grid-header">Laundry</div>
-            <div class="grid-header">Vacuum</div>
+            <div class="grid-header">[Chore 1]</div>
+            <div class="grid-header">[Chore 2]</div>
+            <div class="grid-header">[Chore 3]</div>
             
-            <div class="grid-cell"><div class="name">Shreyas</div></div>
+            <div class="grid-cell"><div class="name">[Person 1]</div></div>
             <div class="grid-cell">
                 <label class="custom-checkbox">
                     <input type="checkbox">
@@ -127,7 +127,7 @@
                     <span class="checkmark"></span>
                 </label>
             </div>
-            <div class="grid-cell"><div class="name">Rachar</div></div>
+            <div class="grid-cell"><div class="name">[Person 2]</div></div>
             <div class="grid-cell">
                 <label class="custom-checkbox">
                     <input type="checkbox">
@@ -218,7 +218,7 @@
                     <span class="checkmark"></span>
                 </label>
             </div>
-            <div class="grid-cell"><div class="name">Kaleem</div></div>
+            <div class="grid-cell"><div class="name">[Person 3]</div></div>
             <div class="grid-cell">
                 <label class="custom-checkbox">
                     <input type="checkbox">
@@ -309,7 +309,7 @@
                     <span class="checkmark"></span>
                 </label>
             </div>
-            <div class="grid-cell"><div class="name">Sly</div></div>
+            <div class="grid-cell"><div class="name">[Person 4]</div></div>
             <div class="grid-cell">
                 <label class="custom-checkbox">
                     <input type="checkbox">
@@ -403,6 +403,6 @@
         </div>
     </div>
 
-    <script src="../scripts/dashboard.js"></script>
+    <script src="../scripts/pages.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">ChoresDone</div>
+        <div id="logo" class="logo">ChoresDone</div>
     </div>
 
     <div class="main-container">
@@ -21,20 +21,51 @@
         </div>
         <div class="form-container">
             <form>
-                <input class="username" type="text" placeholder="Email or username">
-                <input class="password" type="password" placeholder="Password">
+                <input id="username" class="username" type="text" placeholder="Username">
+                <input id="password" class="password" type="password" placeholder="Password">
                 
                 <div class="forgot-row">
                     <a href="reset.html">Forgot password?</a>
                 </div>
-                <button class="submit-button" type="submit">I'm back</button>
+                <button id="logIn_button" class="submit-button" type="submit">I'm back</button>
             </form>
         </div>
 
         <div class="signup-container">
             <p>Don't have an account yet?</p>
-            <button class="signup-button">Sign Up</button>
+            <button id="signUp-page" class="signup-button">Sign Up</button>
         </div>
     </div>
+    
+    <script>
+        let loginSuccessful = false;
+        let logIn_button = document.getElementById('logIn_button');
+        let signUpPage_button = document.getElementById('signUp-page');
+        
+        logIn_button.addEventListener('click', () => {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            let storedUsername = localStorage.getItem("username");
+            let storedPassword = localStorage.getItem("password");
+
+            if(!(username === storedUsername && password === storedPassword)) {
+                alert("Incorrect username or password. Try again!");
+            } else {
+                loginSuccessful = true;
+                alert("Log-in successful!")
+            }
+        });
+
+        let logo = document.getElementById('logo');
+
+        logo.addEventListener('click', () => {
+            location.replace('../index.html');
+        });
+
+        signUpPage_button.addEventListener('click', () => {
+            location.replace('sign-up.html');
+        });
+    </script>
 </body>
 </html>

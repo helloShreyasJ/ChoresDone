@@ -16,6 +16,13 @@ body {
     color: #4E4747;
     align-items: center;
     margin-left: 105px;
+    transition:ease 300ms;
+}
+.logo:hover {
+    color: #4e4747bc;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: ease 300ms;
 }
 .button-container {
     display: flex;
@@ -32,6 +39,12 @@ body {
     padding: 9.63px 18.05px 9.63px 18.05px;
     border: 0px;
     border-radius: 9.63px;
+    transition:ease 300ms;
+}
+.button-container > button:hover{
+    cursor: pointer;
+    background-color: #4e4747bc;
+    transition:ease 300ms;
 }
 .info-container {
     display: flex;
@@ -66,6 +79,12 @@ body {
     border-radius: 20px;
     margin-top: 20px;
     padding: 8px 16px 8px 16px;
+    transition: ease 300ms;
+}
+.get-started:hover {
+    cursor: pointer;
+    background-color: #4e4747d2;
+    transition: ease 300ms;
 }
 .bigboy-container {
     display: flex;
@@ -207,7 +226,7 @@ form {
     font-size: 16px;
     color: #4e4747b3;
 }
-.signup-button {
+.signup-button, .login-button {
     font-family: 'Nunito';
     font-size: 16px;
     background-color: #4E4747;

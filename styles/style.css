@@ -1,11 +1,9 @@
 * {
     font-family: 'Fredoka';
 }
-
 body {
     background-color: #FFF9F5;
 }
-
 .navbar {
     display: flex;
     width: 100%;
@@ -19,14 +17,12 @@ body {
     align-items: center;
     margin-left: 105px;
 }
-
 .button-container {
     display: flex;
     align-items: center;
     margin-left: auto; /* 👈 This pushes it to the right */
     margin-right: 105px;
 }
-
 .button-container > button {
     font-family: 'Nunito';
     font-size: 19.25px;
@@ -37,48 +33,40 @@ body {
     border: 0px;
     border-radius: 9.63px;
 }
-
 .info-container {
     display: flex;
     background-color: #D9D9D9;
     width: 850px;
     height: 475px;
 }
-
 .info {
     background-color: inherit;
     width: 661px;
     margin-top: 10px;
     margin-left: 80px;
 }
-
 .heading {
     color: #4E4747;
     font-size: 48px;
     font-weight: 600;
     background-color: inherit;
 }
-
 .subheading {
     font-size: 32px;
     font-weight: 600;
     color: #807575;
     background-color: inherit;
 }
-
 .get-started {
     font-size: 48px;
     font-weight: 600;
     color: #FFF9F5;
     background-color: #4E4747;
-
     border: 0px;
     border-radius: 20px;
-
     margin-top: 20px;
     padding: 8px 16px 8px 16px;
 }
-
 .bigboy-container {
     display: flex;
     justify-content: space-between;
@@ -86,22 +74,18 @@ body {
     background-color: #D9D9D9;
     flex-wrap: wrap;
 }
-
 .figmaexport {
     margin-right: 20px;
 }
-
 .faq-container > .heading {
     margin-left: 90px;
 }
-
 .main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-
 .form-container {
     display: flex;
     flex-direction: column;
@@ -115,27 +99,22 @@ body {
     margin-top: 10px;
     padding: 50px 50px 35px 50px;
 }
-
 .form-heading {
     display: flex;
     gap: 20px;
 }
-
 .reset-heading {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .reset-heading > .heading, .subheading {
     margin: 0px;
 }
-
 .reset-heading > .subheading {
     font-family: 'Nunito';
     font-size: 18px;
 }
-
 .reset-subheading {
     font-family: 'Nunito';
     font-size: 18px;
@@ -143,7 +122,6 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
 .reset-container {
     display: flex;
     flex-direction: column;
@@ -156,12 +134,10 @@ body {
     margin-top: 20px;
     padding: 10px 40px 30px 40px;
 }
-
 form {
     display: flex;
     flex-direction: column;
 }
-
 .username {
     background-color: #FFF9F5;
     color: #4E4747;
@@ -172,11 +148,9 @@ form {
     margin-bottom: 15px;
     border-radius: 8px;
 }
-
 .username::placeholder{
     color: #4E4747;
 }
-
 .email {
     background-color: #FFF9F5;
     color: #4E4747;
@@ -187,11 +161,9 @@ form {
     margin-bottom: 15px;
     border-radius: 8px;
 }
-
 .email::placeholder {
     color: #4E4747;
 }
-
 .password {
     background-color: #FFF9F5;
     color: #4E4747;
@@ -202,11 +174,9 @@ form {
     margin-bottom: 15px;
     border-radius: 8px;
 }
-
 .password::placeholder{
     color: #4E4747;
 }
-
 .submit-button {
     background-color: #4E4747;
     color: #FFF9F5;
@@ -218,30 +188,25 @@ form {
     margin-bottom: 15px;
     border-radius: 8px;
 }
-
 .forgot-row {
     display: flex;
     justify-content: end;
 }
-
 .forgot-row > a {
     font-family: 'Nunito';
     color: #4E4747;
     text-decoration: none;
 }
-
 .signup-container {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
 }
-
 .signup-container > p {
     font-family: 'Nunito';
     font-size: 16px;
     color: #4e4747b3;
 }
-
 .signup-button {
     font-family: 'Nunito';
     font-size: 16px;
@@ -252,23 +217,94 @@ form {
     border: 0px;
     border-radius: 9.63px;
 }
-
 .chores-done {
     color: #C46826;
     align-self: center;
     margin-left: 10px;
 }
-
 .dashboard-header {
     padding: 30px 20px 50px 20px;
 }
-
 .dashboard-header > .heading {
     margin: 0px;
     margin-left: 70px;
 }
 .dashboard-header > .subheading {
     margin-left: 70px;
+}
+.button-container > .add-people, .button-container > .add-chores {
+    font-family: 'Fredoka';
+    font-weight: 600;
+    font-size: 33.17px;
+}
+.dashboard {
+    flex-direction: column;
+    background-color: #FFF9F5;
+    margin-top: 20px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 4fr 5fr 5fr 5fr;
+    width: 90%;
+    gap: 20px;
+    margin-top: 30px;
+}
+.grid-cell {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: 100px;
+    padding: 20px 0px 0px 20px;
+    background-color: #D9D9D9;
+}
+.name {
+    color: #4E4747;
+    font-size: 33.56px;
+    font-weight: 600;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+.custom-checkbox input {
+    display: none;
+}
+.checkmark {
+    height: 25px;
+    width: 25px;
+    background-color: #FFF9F5;
+    border: 2px solid #4E4747;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+    transition: 0.2s ease;
+    margin-left: 10px;
+}  
+.custom-checkbox input:checked + .checkmark {
+    background-color: #78E08F;
+    border-color: #4E4747;
+}
+.custom-checkbox .checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.custom-checkbox input:checked + .checkmark::after {
+display: block;
+}
+.grid-header {
+    font-size: 33.17px;
+    font-weight: 600;
+    text-align: center;
+    color: #4E4747;
 }
 
 @media (max-width: 786px) {

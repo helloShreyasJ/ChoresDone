@@ -38,6 +38,7 @@
         let logInPage_button = document.getElementById('logIn-page');
 
         signUp_button.addEventListener('click', () => {
+            event.preventDefault();
             let username = document.getElementById('username').value;
             let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
@@ -52,7 +53,7 @@
                 localStorage.setItem("email", email);
                 localStorage.setItem("password", password);
                 
-                alert('Account created. You can log-in now!')
+                location.replace('log-in.html');
             }
         });
 

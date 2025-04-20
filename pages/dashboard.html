@@ -12,13 +12,13 @@
 <body>
     <div class="navbar">
         <div id="logo" class="logo">ChoresDone</div>
-        <div class="chores-done heading">0</div>
+        <div id="numberOfChoresDone" class="chores-done heading">0</div>
     </div>
 
     <div class="bigboy-container">
         <div class="dashboard-header">
             <h1 class="heading">Hello <span id="name">[name]</span>,</h1>
-            <h2 class="subheading">[message]</h2>
+            <h2 id="message" class="subheading">[message]</h2>
         </div>
     </div>
 
@@ -403,6 +403,22 @@
         </div>
     </div>
 
-    <script src="../scripts/pages.js"></script>
+    <script>
+        let logo = document.getElementById('logo');
+        let choresDone = document.getElementById('numberOfChoresDone'); //number of chores done
+        let name = document.getElementById('name');
+        let message = document.getElementById('message');
+        let success = localStorage.getItem("loginSuccess");
+        const quotesURL = "https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
+
+        if (success === 'true') {
+            name.textContent = localStorage.getItem("username");
+            message.textContent = "Today, you are you."
+        }
+
+        logo.addEventListener('click', () => {
+            location.replace('../index.html');
+        });
+    </script>
 </body>
 </html>

@@ -27,7 +27,7 @@
                 <div class="forgot-row">
                     <a href="reset.html">Forgot password?</a>
                 </div>
-                <button id="logIn_button" class="submit-button" type="submit">I'm back</button>
+                <button id="logIn_button" class="submit-button">I'm back</button>
             </form>
         </div>
 
@@ -43,6 +43,7 @@
         let signUpPage_button = document.getElementById('signUp-page');
         
         logIn_button.addEventListener('click', () => {
+            event.preventDefault();
             let username = document.getElementById("username").value;
             let password = document.getElementById("password").value;
 
@@ -53,7 +54,9 @@
                 alert("Incorrect username or password. Try again!");
             } else {
                 loginSuccessful = true;
-                alert("Log-in successful!")
+                localStorage.setItem("loginSuccess","true");
+                alert("Log-in successful!");
+                location.replace('dashboard.html');
             }
         });
 

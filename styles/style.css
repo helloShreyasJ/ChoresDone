@@ -206,6 +206,12 @@ form {
     margin-top: 15px;
     margin-bottom: 15px;
     border-radius: 8px;
+    transition:ease 300ms;
+}
+.submit-button:hover {
+    cursor: pointer;
+    background-color: #4e4747bc;
+    transition:ease 300ms;
 }
 .forgot-row {
     display: flex;
@@ -235,6 +241,12 @@ form {
     padding: 9px 18px;
     border: 0px;
     border-radius: 9.63px;
+    transition:ease 300ms;
+}
+.signup-button:hover, .login-button:hover{
+    cursor: pointer;
+    background-color: #4e4747bc;
+    transition:ease 300ms;
 }
 .chores-done {
     color: #C46826;

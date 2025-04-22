@@ -24,20 +24,22 @@
 
     <div class="dashboard bigboy-container">
         <div class="button-container">
-            <button class="add-people heading">&#43; Add People</button>
-            <button class="add-chores heading">&#43; Add Chores</button>
+            <button id="button_addPeople" class="add-people heading">&#43; Add People</button>
+            <button id="button_addChores" class="add-chores heading">&#43; Add Chores</button>
         </div>
     </div>
 
     <div class="center">
-        <div class="grid-container">
-            <div class="grid-header"></div>
-            <div class="grid-header">[Chore 1]</div>
-            <div class="grid-header">[Chore 2]</div>
-            <div class="grid-header">[Chore 3]</div>
+        <div id="myDashboardGrid" class="grid-container">
+        <!--
+                <div class="grid-header"></div>
+                <div class="grid-header">[Chore 1]</div>
+                <div class="grid-header">[Chore 2]</div>
+                <div class="grid-header">[Chore 3]</div>
+                
+                <div class="grid-cell"><div class="name">[Person 1]</div></div>
+                <div class="grid-cell">
             
-            <div class="grid-cell"><div class="name">[Person 1]</div></div>
-            <div class="grid-cell">
                 <label class="custom-checkbox">
                     <input type="checkbox">
                     <span class="checkmark"></span>
@@ -399,6 +401,7 @@
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
+            -->
             </div>
         </div>
     </div>
@@ -409,7 +412,20 @@
         let name = document.getElementById('name');
         let message = document.getElementById('message');
         let success = localStorage.getItem("loginSuccess");
-        const quotesURL = "https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
+        let button_addPeople = document.getElementById('button_addPeople');
+        let button_addChores = document.getElementById('button_addChores')
+        //Creating a new element
+        
+        button_addPeople.addEventListener('click', () => {
+    let personName = prompt("What's their name?")
+        const newPerson = document.createElement('div');
+        newPerson.classList.add('grid-cell');
+        const nameDiv = document.createElement('div');
+        nameDiv.classList.add('name');
+        nameDiv.textContent = personName;
+        newPerson.appendChild(nameDiv);
+        document.getElementById('myDashboardGrid').appendChild(newPerson);
+    });
 
         if (success === 'true') {
             name.textContent = localStorage.getItem("username");

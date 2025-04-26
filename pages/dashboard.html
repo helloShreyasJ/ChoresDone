@@ -29,29 +29,57 @@
         </div>
     </div>
 
-    <div class="center">
+    <div id="taskTable">
         <table>
-            
+            <tr>
+                <th id="person1"></th>
+            </tr>
         </table>
     </div>
 
     <script>
         let logo = document.getElementById('logo');
-        let choresDone = document.getElementById('numberOfChoresDone'); //number of chores done
+        let choresDone = document.getElementById('numberOfChoresDone');
         let name = document.getElementById('name');
         let message = document.getElementById('message');
         let success = localStorage.getItem("loginSuccess");
         let button_addPeople = document.getElementById('button_addPeople');
-        let button_addChores = document.getElementById('button_addChores')
-
+        let button_addChores = document.getElementById('button_addChores');
+        let people = [];
+        let chores = [];
+        
         if (success === 'true') {
             name.textContent = localStorage.getItem("username");
-            message.textContent = "Today, you are you."
+            message.textContent = "Today, you are you.";
         }
-
+        
+        let taskTable = document.getElementById('taskTable');
+        
+        function buildTable() {
+        }
+        
+        let addPeople = () => {
+            let personName = prompt("Enter the person's name:");
+            if (personName) {
+                people.push(personName);
+                buildTable();
+            }
+        }
+        
+        let addChores = () => {
+            let choreName = prompt("Enter the task name:");
+            if (choreName) {
+                chores.push(choreName);
+                buildTable();
+            }
+        }
+        
+        button_addPeople.addEventListener('click', addPeople);
+        button_addChores.addEventListener('click', addChores);
+        
         logo.addEventListener('click', () => {
             location.replace('../index.html');
         });
-    </script>
+        </script>       
 </body>
 </html>

@@ -61,7 +61,7 @@
             let thead = document.createElement('thead');
             let headerRow = document.createElement('tr');
             let emptyCell = document.createElement('th'); //Left corner needs to be empty because the names go there
-
+            emptyCell.className = "emptyCell";
             headerRow.appendChild(emptyCell);
             
             //Adding choreTitle for rowHeader using a for loop
@@ -69,31 +69,36 @@
                 let choreTitle = document.createElement('th');
                 choreTitle.textContent = chore;
                 headerRow.appendChild(choreTitle);
+                headerRow.className = 'choreHeadings';
             })
-
             thead.appendChild(headerRow);
             taskTable.appendChild(thead);
 
             //Building the table body. It will contain name of the People.
             let tbody = document.createElement('tbody');
+            tbody.className = 'tbody';
                 people.forEach(person => { 
                     let personRow = document.createElement('tr');
                     let nameCell = document.createElement('td');
+                    nameCell.className = 'nameCell';
                     nameCell.textContent = person;
                     personRow.appendChild(nameCell);
 
                     chores.forEach(chore => {
-                    let checkBoxCell = document.createElement('td');
+                    let checkboxCell = document.createElement('td');
                     let checkboxContainer = document.createElement('div');
+                    checkboxCell.className = 'checkboxCell';
+                    checkboxContainer.className = 'checkbox-container';
 
                     for(let i = 0; i < 7; i++) {
                         let checkbox = document.createElement('input');
+                        checkbox.className = 'checkbox';
                         checkbox.type = 'checkbox';
                         checkboxContainer.appendChild(checkbox);
                     }
 
-                    checkBoxCell.appendChild(checkboxContainer);
-                    personRow.appendChild(checkBoxCell);
+                    checkboxCell.appendChild(checkboxContainer);
+                    personRow.appendChild(checkboxCell);
                 })
                 tbody.appendChild(personRow);
             })

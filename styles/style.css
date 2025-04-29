@@ -27,7 +27,7 @@ body {
 .button-container {
     display: flex;
     align-items: center;
-    margin-left: auto; /* 👈 This pushes it to the right */
+    margin-left: auto;
     margin-right: 105px;
 }
 .button-container > button {
@@ -303,6 +303,45 @@ form {
     font-weight: 600;
     text-align: center;
     color: #4E4747;
+}
+.taskTable {
+    border-collapse: separate;
+    border-spacing: 20px;
+}
+.choreHeadings {
+    color: #4E4747;
+    font-size: 33.56px;
+}
+.nameCell {
+    color: #4E4747;
+    font-size: 33.56px;
+    font-weight: 600;
+    padding: 20px 40px;
+}
+.tbody {
+    background-color: #D9D9D9;
+}
+.checkboxCell {
+    padding: 20px 60px;
+}
+.checkbox-container {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+.checkbox-container  > .checkbox {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #4E4747;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.checkbox-container  > .checkbox:checked {
+    background-color: #78E08F;
+    border-color: #4E4747;
 }
 
 @media (max-width: 786px) {

@@ -56,7 +56,50 @@
         let taskTable = document.getElementById('taskTable');
         
         function buildTable() {
+            taskTable.textContent = "";
+            //Building table head. It will contain the choreTitles.
+            let thead = document.createElement('thead');
+            let headerRow = document.createElement('tr');
+            let emptyCell = document.createElement('th'); //Left corner needs to be empty because the names go there
+
+            headerRow.appendChild(emptyCell);
             
+            //Adding choreTitle for rowHeader using a for loop
+            chores.forEach(chore => {
+                let choreTitle = document.createElement('th');
+                choreTitle.textContent = chore;
+                headerRow.appendChild(choreTitle);
+            })
+
+            thead.appendChild(headerRow);
+            taskTable.appendChild(thead);
+
+            //Building the table body. It will contain name of the People.
+            let tbody = document.createElement('tbody');
+                people.forEach(person => { 
+                    let personRow = document.createElement('tr');
+                    let nameCell = document.createElement('td');
+                    nameCell.textContent = person;
+                    personRow.appendChild(nameCell);
+
+                    chores.forEach(chore => {
+                    let checkBoxCell = document.createElement('td');
+                    let checkboxContainer = document.createElement('div');
+
+                    for(let i = 0; i < 7; i++) {
+                        let checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkboxContainer.appendChild(checkbox);
+                    }
+
+                    checkBoxCell.appendChild(checkboxContainer);
+                    personRow.appendChild(checkBoxCell);
+                })
+                tbody.appendChild(personRow);
+            })
+            taskTable.appendChild(tbody);
+
+            taskTable.className = "taskTable";
         }
         
         let addPeople = () => {

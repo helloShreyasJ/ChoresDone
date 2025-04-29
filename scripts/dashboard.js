@@ -7,6 +7,7 @@ let button_addPeople = document.getElementById('button_addPeople');
 let button_addChores = document.getElementById('button_addChores');
 let people = [];
 let chores = [];
+let choresDoneCounter = 0;
 
 if (success === 'true') {
     name.textContent = localStorage.getItem("username");
@@ -54,6 +55,18 @@ function buildTable() {
                 let checkbox = document.createElement('input');
                 checkbox.className = 'checkbox';
                 checkbox.type = 'checkbox';
+                checkbox.addEventListener('change', () => {
+                    //Chores done counter
+                    if(checkbox.checked) {
+                        choresDoneCounter++;
+                    } else {
+                        choresDoneCounter --;
+                    }
+                    choresDone.innerText = choresDoneCounter;
+                    if(choresDone.innerText == 7) {
+                        alert("Wahoo! You're done with a Chore for the week. Great work.")
+                    }
+                })
                 checkboxContainer.appendChild(checkbox);
             }
 

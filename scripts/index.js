@@ -2,6 +2,8 @@ let logo = document.getElementById('logo');
 let button_signup = document.getElementById('signup');
 let button_login = document.getElementById('login');
 let button_getstarted = document.getElementById('get-started');
+let questions = document.querySelectorAll('.question');
+let answers = document.querySelectorAll('.answer');
 
 let replaceTo = 'pages/sign-up.html'; //replace location to pages
 
@@ -30,6 +32,18 @@ if(success === "true") {
         localStorage.removeItem("username");
         localStorage.removeItem("password");
         localStorage.removeItem("email");
+        localStorage.removeItem("chores");
+        localStorage.removeItem("people");
         localStorage.loginSuccess = "false";
     }); 
+}
+
+for(let i = 0; i < questions.length; i++) {
+    questions[i].addEventListener('click', () => {
+        if (answers[i].style.display === 'block') {
+            answers[i].style.display = 'none';
+        } else {
+            answers[i].style.display = 'block';
+        }
+    });
 }

@@ -99,6 +99,27 @@ body {
 .faq-container > .heading {
     margin-left: 90px;
 }
+.faqs {
+    margin-left: 105px;
+    width: 1000px;
+}
+.question, .answer {
+    font-family: 'Nunito';
+    font-size: 24px;
+}
+.question {
+    color: #4E4747;
+}
+.answer {
+    color: #807575;
+    display: none;
+}
+.circle-plus {
+    color: #4E4747;
+    font-size: 32px;
+    margin-right: 4px;
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -305,6 +326,7 @@ form {
     color: #4E4747;
 }
 .taskTable {
+    margin-left: 100px;
     border-collapse: separate;
     border-spacing: 20px;
 }
@@ -322,7 +344,7 @@ form {
     background-color: #D9D9D9;
 }
 .checkboxCell {
-    padding: 20px 60px;
+    padding: 20px 40px;
 }
 .checkbox-container {
     display: flex;

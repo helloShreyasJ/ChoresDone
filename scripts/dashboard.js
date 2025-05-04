@@ -86,6 +86,7 @@ let addPeople = () => {
         people.push(personName);
         buildTable();
     }
+    localStorage.setItem("people", JSON.stringify(people));
 }
 
 let addChores = () => {
@@ -94,6 +95,8 @@ let addChores = () => {
         chores.push(choreName);
         buildTable();
     }
+
+    localStorage.setItem("chores", JSON.stringify(chores));
 }
 
 button_addPeople.addEventListener('click', addPeople);
@@ -102,3 +105,16 @@ button_addChores.addEventListener('click', addChores);
 logo.addEventListener('click', () => {
     location.replace('../index.html');
 });
+
+let retrievedChores = localStorage.getItem("chores");
+let retrievedPeople = localStorage.getItem("people");
+
+if(retrievedChores) {
+    chores = JSON.parse(retrievedChores);
+}
+
+if(retrievedPeople) {
+    people = JSON.parse(retrievedPeople);
+}
+
+buildTable();

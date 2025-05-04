@@ -89,6 +89,11 @@ function buildTable() {
                 people.splice(index, 1);
                 localStorage.setItem("people", JSON.stringify(storedPeople));
             }
+            if (people.length === 0) {
+                localStorage.removeItem('chores');
+                location.reload();
+            }
+
             personRow.remove();
         });
 

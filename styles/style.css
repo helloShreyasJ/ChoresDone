@@ -326,7 +326,7 @@ form {
     color: #4E4747;
 }
 .taskTable {
-    margin-left: 100px;
+    margin-left: 20px;
     border-collapse: separate;
     border-spacing: 20px;
 }
@@ -365,7 +365,9 @@ form {
     background-color: #78E08F;
     border-color: #4E4747;
 }
-
+.trashContainer > img {
+    width: 70px;
+}
 @media (max-width: 786px) {
     .navbar {
         flex-direction: column;

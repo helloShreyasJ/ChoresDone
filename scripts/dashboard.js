@@ -18,7 +18,7 @@ let taskTable = document.getElementById('taskTable');
 
 function buildTable() {
     taskTable.textContent = "";
-    //Building table head. It will contain the choreTitles.
+    //Building table head. It will contain the choreTitles
     let thead = document.createElement('thead');
     let headerRow = document.createElement('tr');
     let emptyCell = document.createElement('th'); //Left corner needs to be empty because the names go there
@@ -35,28 +35,29 @@ function buildTable() {
     thead.appendChild(headerRow);
     taskTable.appendChild(thead);
 
-    //Building the table body. It will contain name of the People.
+    //Building the table body. It will contain name of the People
     let tbody = document.createElement('tbody');
     tbody.className = 'tbody';
         people.forEach(person => { 
-            let personRow = document.createElement('tr');
-            let nameCell = document.createElement('td');
+            let personRow = document.createElement('tr'); // New row for tasks for each person
+            let nameCell = document.createElement('td'); // Name cell that will contain name of person
             nameCell.className = 'nameCell';
             nameCell.textContent = person;
-            personRow.appendChild(nameCell);
 
-            chores.forEach(chore => {
-            let checkboxCell = document.createElement('td');
-            let checkboxContainer = document.createElement('div');
+            personRow.appendChild(nameCell); // Append name cell to personRow
+
+            chores.forEach(chore => { // To make checkboxes for each chore
+            let checkboxCell = document.createElement('td'); // To store the checkbox container
+            let checkboxContainer = document.createElement('div'); // Container that will store 7 checkboxes
             checkboxCell.className = 'checkboxCell';
             checkboxContainer.className = 'checkbox-container';
 
-            for(let i = 0; i < 7; i++) {
+            for(let i = 0; i < 7; i++) { //Creating 7 checkboxes
                 let checkbox = document.createElement('input');
                 checkbox.className = 'checkbox';
                 checkbox.type = 'checkbox';
                 checkbox.addEventListener('change', () => {
-                    //Chores done counter
+                    //Incrementing and decrementing the Chores done counter
                     if(checkbox.checked) {
                         choresDoneCounter++;
                     } else {
@@ -69,14 +70,37 @@ function buildTable() {
                 })
                 checkboxContainer.appendChild(checkbox);
             }
-
             checkboxCell.appendChild(checkboxContainer);
             personRow.appendChild(checkboxCell);
         })
+        let trashCell = document.createElement('td');
+        trashCell.style.backgroundColor = '#FFF9F5';
+        let trashContainer = document.createElement('div');
+        trashCell.className = 'trashCell';
+        trashContainer.className = 'trashContainer';
+        let trashBox = document.createElement('img');
+        trashBox.src = '../images/trash.svg';
+
+        trashCell.addEventListener('click', () => {
+            let storedPeople = JSON.parse(localStorage.getItem("people"));
+            let index = storedPeople.indexOf(person);
+            if (index !== -1) {
+                storedPeople.splice(index, 1);
+                people.splice(index, 1);
+                localStorage.setItem("people", JSON.stringify(storedPeople));
+            }
+            personRow.remove();
+        });
+
+        trashContainer.appendChild(trashBox);
+        trashCell.appendChild(trashContainer);
+
+        personRow.appendChild(trashCell);
         tbody.appendChild(personRow);
     })
-    taskTable.appendChild(tbody);
 
+
+    taskTable.appendChild(tbody);
     taskTable.className = "taskTable";
 }
 

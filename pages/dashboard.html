@@ -10,11 +10,13 @@
     </style>
 </head>
 <body>
+    <!--Navbar-->
     <div class="navbar">
         <div id="logo" class="logo">ChoresDone</div>
         <div id="numberOfChoresDone" class="chores-done heading">0</div>
     </div>
 
+    <!--Dashboard header, big-boy container Is just a name I give it to wrap it for flexbox.-->
     <div class="bigboy-container">
         <div class="dashboard-header">
             <h1 class="heading">Hello <span id="name">[name]</span>,</h1>
@@ -22,6 +24,7 @@
         </div>
     </div>
 
+    <!--Dashboard-->
     <div class="dashboard bigboy-container">
         <div class="button-container">
             <button id="button_nudge" class="add-people nudge heading">Nudge</button>
@@ -31,10 +34,13 @@
         </div>
     </div>
 
+    <!--Task table-->
     <div id="taskTable">
         <table>
         </table>
     </div>
+
+    <!--JavaScript code. This is internal javascript. It was previously in an external file but GitHub pages was giving me a resource load error and was not able to -->
     <script>
         let logo = document.getElementById('logo');
         let choresDone = document.getElementById('numberOfChoresDone');

@@ -50,5 +50,5 @@ for(let i = 0; i < questions.length; i++) {
 }
 
 kofiContainer.addEventListener('click', () => {
-    location.replace('https://ko-fi.com');
+    location.replace('https://buymeacoffee.com/helloshreyasj');
 });

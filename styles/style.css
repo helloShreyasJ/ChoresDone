@@ -4,6 +4,12 @@
 body {
     background-color: #FFF9F5;
 }
+html { /*Scaling down hack from Stack Overflow, https://stackoverflow.com/questions/9036927/i-need-to-scale-an-entire-website-down-to-80*/
+    zoom: 0.8;
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
 .navbar {
     display: flex;
     width: 100%;

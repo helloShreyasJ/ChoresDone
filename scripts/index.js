@@ -4,6 +4,7 @@ let button_login = document.getElementById('login');
 let button_getstarted = document.getElementById('get-started');
 let questions = document.querySelectorAll('.question');
 let answers = document.querySelectorAll('.answer');
+let kofiContainer = document.querySelector('.kofi-container');
 
 let replaceTo = 'pages/sign-up.html'; //replace location to pages
 
@@ -47,3 +48,7 @@ for(let i = 0; i < questions.length; i++) {
         }
     });
 }
+
+kofiContainer.addEventListener('click', () => {
+    location.replace('https://ko-fi.com');
+});

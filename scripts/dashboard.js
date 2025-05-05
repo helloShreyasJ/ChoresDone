@@ -6,6 +6,7 @@ let success = localStorage.getItem("loginSuccess");
 let button_addPeople = document.getElementById('button_addPeople');
 let button_addChores = document.getElementById('button_addChores');
 let button_nudge = document.getElementById('button_nudge');
+let button_removeChore = document.getElementById('button_removeChore');
 let people = [];
 let chores = [];
 let choresDoneCounter = 0;
@@ -158,9 +159,9 @@ button_nudge.addEventListener('click', () => {
         let index = storedPeople.indexOf(whoToNudge);
         let nudged = false;
 
-        if(index == -1) {
+        if(index == -1) { //To check if the people array contains the username
             alert("Person of this username does not exist");
-            throw new Error('Person of this username does not exist');
+            throw new Error('The people array does not contain this username');
         } else {
             prompt("Enter your message:");
             nudged = true;
@@ -170,6 +171,31 @@ button_nudge.addEventListener('click', () => {
         }
     } catch(error) {
         console.log('Error: ' + error);
+    }
+})
+
+button_removeChore.addEventListener('click', () => {
+    let choreToRemove = prompt("Enter chore name to remove (case-sensitive)");
+    try {
+        let storedChores = JSON.parse(localStorage.getItem('chores'));
+        let index = storedChores.indexOf(choreToRemove);
+        let choreRemoved = false;
+
+        if(index == -1) {
+            alert('A chore of this name does not exist');
+            throw new Error('The chore array does not contain a chore of this name.');
+        } else {
+            chores.splice(index, 1);
+            storedChores.splice(index, 1);
+            localStorage.setItem("chores", JSON.stringify(storedChores));
+            choreRemoved = true;
+        }
+        if(choreRemoved == true) {
+            location.reload();
+            alert(`The chore ${choreToRemove} has been removed.`);
+        }
+    } catch(error) {
+        console.log(error);
     }
 })
 

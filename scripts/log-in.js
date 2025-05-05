@@ -9,8 +9,9 @@ let loginSuccessful = false;
 
             let storedUsername = localStorage.getItem("username");
             let storedPassword = localStorage.getItem("password");
-
-            if(!(username === storedUsername && password === storedPassword)) {
+            if (username == "" || password == "") {
+                alert("Please enter your details to log-in");
+            } else if(!(username === storedUsername && password === storedPassword)) {
                 alert("Incorrect username or password. Try again!");
             } else {
                 loginSuccessful = true;

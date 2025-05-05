@@ -5,6 +5,7 @@ let message = document.getElementById('message');
 let success = localStorage.getItem("loginSuccess");
 let button_addPeople = document.getElementById('button_addPeople');
 let button_addChores = document.getElementById('button_addChores');
+let button_nudge = document.getElementById('button_nudge');
 let people = [];
 let chores = [];
 let choresDoneCounter = 0;
@@ -125,7 +126,7 @@ function buildTable() {
 }
 
 let addPeople = () => {
-    let personName = prompt("Enter the person's name:");
+    let personName = prompt("Enter the person's username:");
     if (personName) {
         people.push(personName);
         buildTable();
@@ -149,6 +150,28 @@ button_addChores.addEventListener('click', addChores);
 logo.addEventListener('click', () => {
     location.replace('../index.html');
 });
+
+button_nudge.addEventListener('click', () => {
+    let whoToNudge = prompt('Who do you want to nudge? (case-sensitive)');
+    try {
+        let storedPeople = JSON.parse(localStorage.getItem('people'));
+        let index = storedPeople.indexOf(whoToNudge);
+        let nudged = false;
+
+        if(index == -1) {
+            alert("Person of this username does not exist");
+            throw new Error('Person of this username does not exist');
+        } else {
+            prompt("Enter your message:");
+            nudged = true;
+        }
+        if(nudged = true) {
+            alert(`Successfully nudged ${whoToNudge}!`);
+        }
+    } catch(error) {
+        console.log('Error: ' + error);
+    }
+})
 
 let retrievedChores = localStorage.getItem("chores");
 let retrievedPeople = localStorage.getItem("people");

@@ -112,6 +112,10 @@ html { /*Scaling down hack from Stack Overflow, https://stackoverflow.com/questi
     margin-left: 105px;
     width: 1000px;
 }
+.faqs > h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
 .question, .answer {
     font-family: 'Nunito';
     font-size: 24px;
@@ -129,14 +133,19 @@ html { /*Scaling down hack from Stack Overflow, https://stackoverflow.com/questi
     margin-right: 4px;
 }
 .kofi-container {
+    cursor: pointer;
     position: sticky;
     bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 1801px;
-    height: 80px;
+    height: 90px;
     background-color: #4E4747;
+    transition: ease 100ms;
+}
+.kofi-container:hover {
+    background-color: #5e5252;
 }
 .kofi-text {
     display: flex;

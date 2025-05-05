@@ -11,7 +11,22 @@ let choresDoneCounter = 0;
 
 if (success === 'true') {
     name.textContent = localStorage.getItem("username");
-    message.textContent = "Today, you are you.";
+    getQuote().then(quote => {
+        message.textContent = quote;
+    });
+}
+
+async function getQuote () {
+    try {
+        let response = await fetch('https://dummyjson.com/quotes/random');
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        let quote = await response.json();
+        return quote.quote + " - " + quote.author;
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 let taskTable = document.getElementById('taskTable');

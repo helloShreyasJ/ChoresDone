@@ -41,21 +41,24 @@
         </table>
     </div>
 
-    <!--JavaScript code. This is internal javascript. It was previously in an external file but GitHub pages was giving me a resource load error and was not able to -->
+    <!--Dashboard JavaScript code. This is internal javascript. It was previously in an external file but GitHub pages was giving me a resource load error and was not able to -->
     <script>
-        let logo = document.getElementById('logo');
-        let choresDone = document.getElementById('numberOfChoresDone');
-        let name = document.getElementById('name');
-        let message = document.getElementById('message');
-        let success = localStorage.getItem("loginSuccess");
-        let button_addPeople = document.getElementById('button_addPeople');
-        let button_addChores = document.getElementById('button_addChores');
-        let button_nudge = document.getElementById('button_nudge');
-        let button_removeChore = document.getElementById('button_removeChore');
-        let people = [];
-        let chores = [];
-        let choresDoneCounter = 0;
+        /* VARIABLES */
+        let logo = document.getElementById('logo'); // ChoresDone logo
+        let choresDone = document.getElementById('numberOfChoresDone'); // Counter for number of chores done
+        let name = document.getElementById('name'); // Username
+        let message = document.getElementById('message'); // Message/Quote
+        let success = localStorage.getItem("loginSuccess"); // Log-in success (Boolean)
+        let button_addPeople = document.getElementById('button_addPeople'); // Add people button
+        let button_addChores = document.getElementById('button_addChores'); // Add chores button
+        let button_nudge = document.getElementById('button_nudge'); // Nudge button
+        let button_removeChore = document.getElementById('button_removeChore'); // Remove chore button
+        let people = []; // Empty people array. We add people to this later using the button_addPeople
+        let chores = []; // Empty chores array. We add chores to this later using the button_addChores
+        let choresDoneCounter = 0; // Value for the Counter for the chores done
 
+        /* LOGIN SUCCESS */
+        // If login is successful, then retrieve the username and set a message using the getQuote function
         if (success === 'true') {
             name.textContent = localStorage.getItem("username");
             getQuote().then(quote => {
@@ -63,32 +66,34 @@
             });
         }
 
+        /* DASHBOARD MESSAGE */
+        // Async function to get quotes using the Fetch API
         async function getQuote () {
             try {
-                let response = await fetch('https://dummyjson.com/quotes/random');
-                if (!response.ok) {
+                // I get the quotes from dummyjson
+                let response = await fetch('https://dummyjson.com/quotes/random'); // Gets response object from dummyjson
+                if (!response.ok) { // Throw error if response is unsuccessful
                     throw new Error(`Response status: ${response.status}`);
                 }
-                let quote = await response.json();
-                return quote.quote + " - " + quote.author;
-            } catch (error) {
+                let convertedData = await response.json(); // Convert the response to a JSON object to interact with it using Javascript
+                return convertedData.quote + " - " + convertedData.author; // Return the value to the corresponding key quote and author of the JSON response
+            } catch (error) { // Handle the previously thrown error
                 console.log(error);
             }
         }
 
-        let taskTable = document.getElementById('taskTable');
-
+        /* TASK TABLE */
+        let taskTable = document.getElementById('taskTable'); // Table that will contain tasks
         function buildTable() {
-            taskTable.textContent = "";
-            //Building table head. It will contain the choreTitles
+            taskTable.textContent = ""; // Assigned an empty string to not have overlapping name and chores whenever the table is rebuilt
+
+            /* TABLE HEAD: Will contain the chore titles */
             let thead = document.createElement('thead');
             let headerRow = document.createElement('tr');
-            let emptyCell = document.createElement('th'); //Left corner needs to be empty because the names go there
+            let emptyCell = document.createElement('th'); // Left corner needs to be empty because the names go there
             emptyCell.className = "emptyCell";
             headerRow.appendChild(emptyCell);
-            
-            //Adding choreTitle for rowHeader using a for loop
-            chores.forEach(chore => {
+            chores.forEach(chore => { // Adding chore titles in header using a for-each loop
                 let choreTitle = document.createElement('th');
                 choreTitle.textContent = chore;
                 headerRow.appendChild(choreTitle);
@@ -97,30 +102,29 @@
             thead.appendChild(headerRow);
             taskTable.appendChild(thead);
 
-            //Building the table body. It will contain name of the People
+            /* TABLE BODY: Will contain the People, Checkboxes, TrashBins*/
             let tbody = document.createElement('tbody');
             tbody.className = 'tbody';
-                people.forEach(person => { 
-                    let personRow = document.createElement('tr'); // New row for tasks for each person
-                    let nameCell = document.createElement('td'); // Name cell that will contain name of person
-                    nameCell.className = 'nameCell';
-                    nameCell.textContent = person;
 
-                    personRow.appendChild(nameCell); // Append name cell to personRow
+            people.forEach(person => { // Adding people in their name cells using a for-each loop
+                let personRow = document.createElement('tr');
+                let nameCell = document.createElement('td');
+                nameCell.className = 'nameCell';
+                nameCell.textContent = person;
+                personRow.appendChild(nameCell);
 
-                    chores.forEach(chore => { // To make checkboxes for each chore
+                chores.forEach(chore => { // To make checkboxes for each chore
                     let checkboxCell = document.createElement('td'); // To store the checkbox container
                     let checkboxContainer = document.createElement('div'); // Container that will store 7 checkboxes
                     checkboxCell.className = 'checkboxCell';
                     checkboxContainer.className = 'checkbox-container';
 
-                    for(let i = 0; i < 7; i++) { //Creating 7 checkboxes
+                    for(let i = 0; i < 7; i++) { // Creating 7 checkboxes (one for each day of the week)
                         let checkbox = document.createElement('input');
                         checkbox.className = 'checkbox';
                         checkbox.type = 'checkbox';
                         checkbox.addEventListener('change', () => {
-                            //Incrementing and decrementing the Chores done counter
-                            if(checkbox.checked) {
+                            if(checkbox.checked) { // Incrementing and decrementing the Chores done counter (NOTE: I need to fix this)
                                 choresDoneCounter++;
                             } else {
                                 choresDoneCounter --;
@@ -130,11 +134,12 @@
                                 alert("Wahoo! You're done with a Chore for the week. Great work.")
                             }
                         })
-                        checkboxContainer.appendChild(checkbox);
-                    }
+                    checkboxContainer.appendChild(checkbox);
+                }
                     checkboxCell.appendChild(checkboxContainer);
                     personRow.appendChild(checkboxCell);
                 })
+
                 let trashCell = document.createElement('td');
                 trashCell.style.backgroundColor = '#FFF9F5';
                 let trashContainer = document.createElement('div');
@@ -146,7 +151,7 @@
                 trashCell.addEventListener('click', () => {
                     let storedPeople = JSON.parse(localStorage.getItem("people"));
                     let index = storedPeople.indexOf(person);
-                    if (index !== -1) {
+                    if (index !== -1) { // If person is present, then remove them
                         storedPeople.splice(index, 1);
                         people.splice(index, 1);
                         localStorage.setItem("people", JSON.stringify(storedPeople));
@@ -155,63 +160,60 @@
                         localStorage.removeItem('chores');
                         location.reload();
                     }
-
                     personRow.remove();
-                });
-
+                })
                 trashContainer.appendChild(trashBox);
                 trashCell.appendChild(trashContainer);
-
                 personRow.appendChild(trashCell);
                 tbody.appendChild(personRow);
             })
-
-
             taskTable.appendChild(tbody);
             taskTable.className = "taskTable";
         }
 
+        /* ADD PEOPLE */
         let addPeople = () => {
-            let personName = prompt("Enter the person's username:");
+            let personName = prompt("Enter the person's username:"); // Prompt for username
             if (personName) {
-                people.push(personName);
-                buildTable();
+                people.push(personName); // Push username onto the "people" array
+                buildTable(); // Rebuild table every time the function is called
             }
-            localStorage.setItem("people", JSON.stringify(people));
+            localStorage.setItem("people", JSON.stringify(people)); // Save people data to localStorage. JSON.stringify() converts javascript object to a JSON string to store it in localStorage (as local storage only stores stuff in a string format).
         }
 
         let addChores = () => {
-            let choreName = prompt("Enter the task name:");
+            let choreName = prompt("Enter the task name:"); // Prompt for task name
             if (choreName) {
-                chores.push(choreName);
-                buildTable();
+                chores.push(choreName); // Push task onto the "chores" array
+                buildTable(); // Rebuild table every time the function is called
             }
 
-            localStorage.setItem("chores", JSON.stringify(chores));
+            localStorage.setItem("chores", JSON.stringify(chores)); // Save chores data to localStorage. JSON.stringify() converts javascript object into JSON string to store it in localStorage (as local storage only stores stuff in a string format).
         }
 
-        button_addPeople.addEventListener('click', addPeople);
-        button_addChores.addEventListener('click', addChores);
+        button_addPeople.addEventListener('click', addPeople); // Call addPeople function every time the add people button is clicked
+        button_addChores.addEventListener('click', addChores); // Call addChores function every time the add chores button is clicked
 
         logo.addEventListener('click', () => {
             location.replace('../index.html');
         });
 
+        /* NUDGE */
         button_nudge.addEventListener('click', () => {
-            let whoToNudge = prompt('Who do you want to nudge? (case-sensitive)');
+            let whoToNudge = prompt('Who do you want to nudge? (case-sensitive)'); // Prompt for username
             try {
-                let storedPeople = JSON.parse(localStorage.getItem('people'));
-                let index = storedPeople.indexOf(whoToNudge);
-                let nudged = false;
+                let storedPeople = JSON.parse(localStorage.getItem('people')); // Get stored array of people in localStorage and convert it into javascript object to interact with it using JavaScript
+                let index = storedPeople.indexOf(whoToNudge); // Get index of the prompted username
+                let nudged = false; // Has been nudged (Boolean)
 
-                if(index == -1) { //To check if the people array contains the username
+                if(index == -1) { // If username does not exist then alert that user does not exist else write a message and boolean "nudged" becomes true
                     alert("Person of this username does not exist");
                     throw new Error('The people array does not contain this username');
                 } else {
                     prompt("Enter your message:");
                     nudged = true;
                 }
-                if(nudged = true) {
+                if(nudged = true) { // If boolean nudged becomes true then person has been successfully nudged
                     alert(`Successfully nudged ${whoToNudge}!`);
                 }
             } catch(error) {
@@ -219,14 +221,15 @@
             }
         })
 
+        /* REMOVE CHORE */
         button_removeChore.addEventListener('click', () => {
-            let choreToRemove = prompt("Enter chore name to remove (case-sensitive)");
+            let choreToRemove = prompt("Enter chore name to remove (case-sensitive)"); // Prompt for chore 
             try {
-                let storedChores = JSON.parse(localStorage.getItem('chores'));
-                let index = storedChores.indexOf(choreToRemove);
-                let choreRemoved = false;
+                let storedChores = JSON.parse(localStorage.getItem('chores')); // Get stored array of chores from localStorage and convert it to javascript object to interact with it using javascript
+                let index = storedChores.indexOf(choreToRemove); // Get index of the prompted chore
+                let choreRemoved = false; // Has been removed (Boolean)
 
-                if(index == -1) {
+                if(index == -1) { // If chore does not exist then alert that it doesn't exist, else remove the chore from the array of chores and localStorage chores
                     alert('A chore of this name does not exist');
                     throw new Error('The chore array does not contain a chore of this name.');
                 } else {
@@ -235,7 +238,7 @@
                     localStorage.setItem("chores", JSON.stringify(storedChores));
                     choreRemoved = true;
                 }
-                if(choreRemoved == true) {
+                if(choreRemoved == true) { // If chore is removed then alert that it has been removed
                     location.reload();
                     alert(`The chore ${choreToRemove} has been removed.`);
                 }
@@ -244,6 +247,7 @@
             }
         })
 
+        /* BUILD TABLE WHEN THE SITE LOADS FROM LOCALSTORAGE */
         let retrievedChores = localStorage.getItem("chores");
         let retrievedPeople = localStorage.getItem("people");
 
